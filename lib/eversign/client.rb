@@ -12,7 +12,7 @@ module Eversign
 		attr_accessor :access_key, :base_uri, :business_id, :token
 
 		def initialize()
-			self.base_uri = Eversign.configuration.api_base || 'https://api.eversign.com'
+			self.base_uri = (Eversign.configuration && Eversign.configuration.api_base) ? Eversign.configuration.api_base : 'https://api.eversign.com'
 			access_key = Eversign.configuration.access_key
 			if access_key.start_with?('Bearer ')
           self.set_oauth_access_token(access_key)

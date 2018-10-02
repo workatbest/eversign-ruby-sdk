@@ -6,21 +6,13 @@ require 'eversign/version'
 Gem::Specification.new do |spec|
   spec.name          = "eversign"
   spec.version       = Eversign::VERSION
-  spec.authors       = ["Sachin Raka"]
-  spec.email         = ["Sachin.Raka@outlook.com"]
+  spec.authors       = ["eversign"]
+  spec.email         = ["support+eversign@apilayer.com"]
 
   spec.summary       = %q{Gem for Eversign API Client.}
   spec.description   = %q{Gem for Eversign API SDK.}
   spec.homepage      = "https://github.com/workatbest/eversign-ruby-sdk"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
 
   spec.files         = Dir['lib/**/*.rb', 'READ']      
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
