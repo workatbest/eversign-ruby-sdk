@@ -14,7 +14,7 @@ signer.id="1"
 signer.name = "Jane Doe"
 signer.email = 'signer@gmail.com'
 
-field = Eversign::Models::Field.new
+field = Eversign::Models::CheckboxField.new
 
 field.identifier = "Test"
 field.x = "120.43811219947"
@@ -26,14 +26,20 @@ field.height = 35
 field.required = 1
 field.readonly = 1
 field.merge = 0
-field.type = 'signature'
+field.validation_type = 'letters_only'
+field.text_style = 'IBU'
+field.text_font = 'calibri'
 
-document.add_field(field)
-document.add_file(file)
-document.add_signer(signer)
-document.add_recipient(recipient)
-recipient = Eversign::Models::Recipient.new(name='Test2', email='recipient2@gmail.com')
-document.add_recipient(recipient)
+if field.valid?
+  document.add_field(field)
+  document.add_file(file)
+  document.add_signer(signer)
+  document.add_recipient(recipient)
+  recipient = Eversign::Models::Recipient.new(name='Test2', email='recipient2@gmail.com')
+  document.add_recipient(recipient)
 
-client = Eversign::Client.new
-p client.create_document(document)
+  client = Eversign::Client.new
+  p client.create_document(document)
+else
+  p field.errors.full_messages
+end
